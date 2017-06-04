@@ -1,0 +1,17 @@
+{
+    "verbose": true,
+    "host": "0.0.0.0",
+    "port": "8080",
+    "ignore": [
+
+    ],
+    "watch": [
+        "src"
+    ],
+    "env": {
+        "NODE_ENV": "development"
+    },
+    "debug": "8010",
+    "restartable": "rs",
+    "exec": "npm run babel-node -- src/index.js"
+}

@@ -1,0 +1,66 @@
+{
+  "name": "chase-sunset",
+  "version": "0.0.1",
+  "description": "A travel agent chat bot",
+  "main": "index.js",
+  "scripts": {
+    "babel": "babel",
+    "babel-node": "babel-node",
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"eslint": "eslint src/ --ext js,jsx",
+    "eslint-fix": "eslint --fix src/ --ext js,jsx",
+    "fix": "npm run format && npm run eslint-fix",
+    "format-check": "git ls-files --directory packages --directory story --directory config --directory scripts --directory webpack | egrep '\\.jsx?$' | xargs prettier -l --print-width 80 --tab-width 2 --trailing-comma all --single-quote",
+    "format": "git ls-files --directory packages --directory story --directory config --directory scripts --directory webpack | egrep '\\.jsx?$' | xargs prettier --write --print-width 80 --tab-width 2 --trailing-comma all --single-quote",
+    "lint": "npm run format-check && npm run eslint",
+    "before-anything": "lint-staged",
+    "pretest": "npm run lint"
+  },
+	"lint-staged": {
+    "*.jsx?": [
+      "prettier --write --print-width 80 --tab-width 2 --trailing-comma all --single-quote",
+      "git add"
+    ]
+  },
+  "pre-commit": [
+    "before-anything"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sylvesteraswin/chase-sunset.git"
+  },
+  "keywords": [
+    "travel",
+    "agency",
+    "chat",
+    "bot"
+  ],
+  "author": "Sylvester Aswin <me@sylvesteraswin.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sylvesteraswin/chase-sunset/issues"
+  },
+  "homepage": "https://github.com/sylvesteraswin/chase-sunset#readme",
+  "engines": {
+    "node": "~4.1.2"
+  },
+  "devDependencies": {
+    "babel-cli": "6.24.1",
+    "babel-eslint": "7.2.3",
+    "babel-preset-env": "1.5.1",
+    "babel-register": "6.24.1",
+    "eslint": "3.19.0",
+    "lint-staged": "3.6.0",
+    "nodemon": "1.11.0",
+    "pre-commit": "1.2.2",
+    "prettier": "1.4.2"
+  },
+  "dependencies": {
+    "body-parser": "1.17.2",
+    "config": "1.26.1",
+    "express": "4.15.3",
+    "mongoose": "4.10.4",
+    "request": "2.81.0"
+  }
+}
