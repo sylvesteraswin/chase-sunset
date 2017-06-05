@@ -4,11 +4,12 @@
   "description": "A travel agent chat bot",
   "main": "index.js",
   "scripts": {
-    "babel": "babel",
+    "babel": "babel src/ -d lib/ --copy-files",
     "babel-node": "babel-node",
-    "start": "nodemon",
-		"build:watch": "webpack --watch",
-    "build": "webpack -p --progress --colors",
+    "start": "NODE_ENV=production PORT=8000 node lib/index.js",
+    "dev": "nodemon",
+    "build:watch": "webpack --watch",
+    "build": "npm run babel && webpack -p --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint src/ --ext js,jsx",
     "eslint-fix": "eslint --fix src/ --ext js,jsx",
@@ -17,7 +18,8 @@
     "format": "git ls-files --directory packages --directory story --directory config --directory scripts --directory webpack | egrep '\\.jsx?$' | xargs prettier --write --print-width 80 --tab-width 2 --trailing-comma all --single-quote",
     "lint": "npm run format-check && npm run eslint",
     "before-anything": "lint-staged",
-    "pretest": "npm run lint"
+    "pretest": "npm run lint",
+		"postinstall": "npm run build"
   },
   "lint-staged": {
     "*.jsx?": [
