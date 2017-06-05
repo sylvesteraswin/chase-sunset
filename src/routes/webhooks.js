@@ -9,7 +9,7 @@ const { handleReceiveMessage, handleReceivePostback } = receive;
 router.get('/', (req, res) => {
   const WEBHOOK_TOKEN = process.env.WEBHOOK_TOKEN
     ? process.env.WEBHOOK_TOKEN
-    : config('appSecretToken');
+    : config.get('appSecretToken');
   if (
     req.query['hub.mode'] === 'subscribe' &&
     req.query['hub.verify_token'] === WEBHOOK_TOKEN

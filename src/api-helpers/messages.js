@@ -1,7 +1,7 @@
 import config from 'config';
 const SERVER_URL = process.env.SERVER_URL
   ? process.env.SERVER_URL
-  : config('serverUrl');
+  : config.get('serverUrl');
 
 // The get started button
 const getStarted = {

@@ -1,6 +1,6 @@
 import { castArray } from 'lodash';
 import api from './api';
-import messages from 'messages';
+import messages from './messages';
 const { callMessagesAPI, callThreadAPI } = api;
 const { createAccountMessage } = messages;
 

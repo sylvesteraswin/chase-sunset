@@ -5,7 +5,7 @@ export default function verifyRequestSignature(req, res, buf) {
   const signature = req.headers['x-hub-signature'];
   const APP_SECRET = process.env.APP_SECRET
     ? process.env.APP_SECRET
-    : config('appSecretToken');
+    : config.get('appSecretToken');
   if (!signature) {
     // For testing, log an error.
     // In production, you should throw an error

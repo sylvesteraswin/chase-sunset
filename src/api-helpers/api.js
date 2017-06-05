@@ -1,11 +1,10 @@
 import request from 'request';
-import { castArray, isEmpty } from 'lodash';
-
 import config from 'config';
+import { castArray, isEmpty } from 'lodash';
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
   ? process.env.PAGE_ACCESS_TOKEN
-  : config('pageAccessToken');
+  : config.get('pageAccessToken');
 
 /**
  * Send messages in order to the Facebook graph API
@@ -17,12 +16,14 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 const callAPI = (endPoint, messageDataArray, queryParams = {}, retries = 5) => {
   // Error if endpoint is not specified
   if (!endPoint) {
+    // eslint-disable-next-line no-console
     console.error(`callAPI required you specify an endpoint.`);
     return;
   }
 
   // Error if out of retries
   if (retries < 0) {
+    // eslint-disable-next-line no-console
     console.error(
       `No more retries left. ${endPoint}, ${messageDataArray}, ${queryParams}`,
     );
