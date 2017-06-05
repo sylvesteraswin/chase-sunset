@@ -14,6 +14,9 @@ import normalizePort from './helpers/normalizePort';
 import index from './routes/index';
 import webhooks from './routes/webhooks';
 
+// Messenger Setup
+import ThreadSetup from './api-helpers/thread-setup';
+
 const app = express();
 // Views
 app.set('view engine', 'ejs');
@@ -51,6 +54,8 @@ app.use(function(err, req, res) {
 // Get the port from environment and store in Express
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+// Messenger Setup
+ThreadSetup.setGetStarted();
 // Port setup
 app.listen(app.get('port'), () => {
   console.log(`Node app is running on port ${app.get('port')}`);
