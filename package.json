@@ -6,7 +6,7 @@
   "scripts": {
     "babel": "babel src/ -d lib/ --copy-files",
     "babel-node": "babel-node",
-    "start": "NODE_ENV=production PORT=8000 node lib/index.js",
+    "start": "NODE_ENV=production node lib/index.js",
     "dev": "nodemon",
     "build:watch": "webpack --watch",
     "build": "npm run babel && webpack -p --progress --colors",
