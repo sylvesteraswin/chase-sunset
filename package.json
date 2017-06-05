@@ -7,8 +7,10 @@
     "babel": "babel",
     "babel-node": "babel-node",
     "start": "nodemon",
+		"build:watch": "webpack --watch",
+    "build": "webpack -p --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1",
-		"eslint": "eslint src/ --ext js,jsx",
+    "eslint": "eslint src/ --ext js,jsx",
     "eslint-fix": "eslint --fix src/ --ext js,jsx",
     "fix": "npm run format && npm run eslint-fix",
     "format-check": "git ls-files --directory packages --directory story --directory config --directory scripts --directory webpack | egrep '\\.jsx?$' | xargs prettier -l --print-width 80 --tab-width 2 --trailing-comma all --single-quote",
@@ -17,7 +19,7 @@
     "before-anything": "lint-staged",
     "pretest": "npm run lint"
   },
-	"lint-staged": {
+  "lint-staged": {
     "*.jsx?": [
       "prettier --write --print-width 80 --tab-width 2 --trailing-comma all --single-quote",
       "git add"
@@ -43,24 +45,40 @@
   },
   "homepage": "https://github.com/sylvesteraswin/chase-sunset#readme",
   "engines": {
-    "node": "~4.1.2"
+    "node": "7.4.x",
+    "npm": "4.0.x"
   },
   "devDependencies": {
     "babel-cli": "6.24.1",
     "babel-eslint": "7.2.3",
+    "babel-loader": "7.0.0",
     "babel-preset-env": "1.5.1",
+    "babel-preset-react": "6.24.1",
     "babel-register": "6.24.1",
+    "babili-webpack-plugin": "0.1.1",
+    "css-loader": "0.28.4",
     "eslint": "3.19.0",
     "lint-staged": "3.6.0",
     "nodemon": "1.11.0",
     "pre-commit": "1.2.2",
-    "prettier": "1.4.2"
+    "prettier": "1.4.2",
+    "style-loader": "0.18.2",
+    "uglify-loader": "2.0.0",
+    "webpack": "2.6.1"
   },
   "dependencies": {
     "body-parser": "1.17.2",
     "config": "1.26.1",
+    "cookie-parser": "1.4.3",
+    "ejs": "2.5.6",
     "express": "4.15.3",
     "mongoose": "4.10.4",
-    "request": "2.81.0"
+    "morgan": "1.8.2",
+    "react": "15.5.4",
+    "react-dom": "15.5.4",
+    "react-weui": "1.0.3",
+    "request": "2.81.0",
+    "serve-favicon": "2.4.3",
+    "weui": "1.1.0"
   }
 }

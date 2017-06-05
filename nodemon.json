@@ -9,7 +9,8 @@
         "src"
     ],
     "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+		"PORT": "8080"
     },
     "debug": "8010",
     "restartable": "rs",

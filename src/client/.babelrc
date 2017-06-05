@@ -1,0 +1,17 @@
+{
+  "presets": [
+        [
+            "env", {
+              // Since we support this IE 11 and
+              // all modern browsers
+                "targets": {
+                    "browsers": [">1%", "last 2 versions"]
+                },
+                // Disable polyfill transforms
+                "useBuiltIns": true,
+                "loose": true
+            }
+        ], "react"
+    ],
+  "plugins": []
+}
