@@ -1,5 +1,5 @@
 import send from './send';
-const { sendReadReceipt } = send;
+const { sendReadReceipt, sendWelcomeMessage } = send;
 
 /*
  * handleReceivePostback — Postback event handler triggered by a postback
@@ -11,7 +11,11 @@ const handleReceivePostback = (event = {}) => {
   const { type, data } = JSON.parse(payload);
 
   switch (type) {
+    case 'GET_STARTED':
+      sendWelcomeMessage(senderId);
+      break;
     default:
+      // eslint-disable-next-line no-console
       console.error(`Unknown Postback called: ${type}`);
       break;
   }

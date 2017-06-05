@@ -1,6 +1,8 @@
 import { castArray } from 'lodash';
 import api from './api';
+import messages from 'messages';
 const { callMessagesAPI, callThreadAPI } = api;
+const { createAccountMessage } = messages;
 
 // Turns typing indicator on
 const typingOn = recepientId => {
@@ -34,6 +36,24 @@ const messageToJSON = (recepientId, messagePayLoad) => {
   };
 };
 
+// Send a welcome message for a non signed-in user
+const sendLoggedOutWelcomeMessage = recepientId => {
+  sendMessage(
+    recepientId,
+    [
+      {
+        text: 'Hi! Welcome to Chase Sunset.',
+      },
+    ],
+    createAccountMessage,
+  );
+};
+
+// Send different welcome message base on if the user is logged in
+const sendWelcomeMessage = recepientId => {
+  sendLoggedOutWelcomeMessage(recepientId);
+};
+
 // Send one or more messages using the Send API
 const sendMessage = (recepientId, messagePayLoads) => {
   const messagePayLoadArray = castArray(messagePayLoads).map(messagePayLoad =>
@@ -61,4 +81,5 @@ const sendReadReceipt = recepientId => {
 export default {
   sendMessage,
   sendReadReceipt,
+  sendWelcomeMessage,
 };

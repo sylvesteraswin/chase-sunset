@@ -58,6 +58,7 @@ app.set('port', port);
 ThreadSetup.setGetStarted();
 // Port setup
 app.listen(app.get('port'), () => {
+  // eslint-disable-next-line no-console
   console.log(`Node app is running on port ${app.get('port')}`);
 });
 export default app;

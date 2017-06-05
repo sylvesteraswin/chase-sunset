@@ -47,6 +47,7 @@ const callAPI = (endPoint, messageDataArray, queryParams = {}, retries = 5) => {
     (error, response, body) => {
       if (!error && response.statusCode === 200) {
         // Message successfully received
+        // eslint-disable-next-line no-console
         console.log(
           `Successfully sent message to ${endPoint} endpoint: `,
           JSON.stringify(body),
@@ -58,6 +59,7 @@ const callAPI = (endPoint, messageDataArray, queryParams = {}, retries = 5) => {
         }
       } else {
         // Message not been successfully received
+        // eslint-disable-next-line no-console
         console.error(
           `Failed calling Messenger API endpoint ${endPoint}`,
           response.statusCode,
@@ -67,6 +69,7 @@ const callAPI = (endPoint, messageDataArray, queryParams = {}, retries = 5) => {
         );
 
         // Retry the request
+        // eslint-disable-next-line no-console
         console.error(`Retrying Request: ${retries} left`);
         callAPI(endPoint, messageDataArray, queryParams, retries - 1);
       }
