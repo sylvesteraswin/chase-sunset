@@ -9,7 +9,7 @@ app.use(
   }),
 );
 app.use(bodyParser.json());
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 3000);
 
 //Server index page
 app.get('/', (req, res) => {
